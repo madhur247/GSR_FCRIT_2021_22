@@ -7,8 +7,8 @@ from utils.dataloaders import LoadImages
 from utils.general import (non_max_suppression, check_img_size, scale_boxes,xyxy2xywh, Profile)
 import time
 
-def run_yolov5(source_path,weights_path,conf_thresh,iou_thresh):
-    spacefile = open("space.names","r",encoding="utf-8")
+def run_yolov5(source_path,weights_path,conf_thresh,iou_thresh,space_path):
+    spacefile = open(space_path,"r",encoding="utf-8")
     lines = spacefile.readlines()
     classes = [x[:-1] for x in lines]
     st = time.time()
@@ -55,5 +55,5 @@ def run_yolov5(source_path,weights_path,conf_thresh,iou_thresh):
                     xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()
                     result.append([classes[int(cls)],xywh,float(conf)])
     return result
-# res = run_yolov5("testing_images\૦૫૨ 218 ળડશ ળીઅંથ વઅઃપ ૫૨૧ ધઠગ રચસ એભીઅંયં આછૂબ_71.jpg","./YoloV5_model2/yolov5x_latest_8000/weights/best.pt",0.55,0.5)
+# res = run_yolov5("testing_images\૦૫૨ 218 ળડશ ળીઅંથ વઅઃપ ૫૨૧ ધઠગ રચસ એભીઅંયં આછૂબ_71.jpg","./YoloV5_model2/yolov5x_latest_8000/weights/best.pt",0.55,0.5,"space.names")
 # print(res)
