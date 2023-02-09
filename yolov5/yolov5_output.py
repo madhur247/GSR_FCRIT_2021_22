@@ -8,6 +8,9 @@ from utils.general import (non_max_suppression, check_img_size, scale_boxes,xyxy
 import time
 
 def run_yolov5(source_path,weights_path,conf_thresh,iou_thresh):
+    spacefile = open("space.names","r",encoding="utf-8")
+    lines = spacefile.readlines()
+    classes = [x[:-1] for x in lines]
     st = time.time()
     model = DetectMultiBackend(weights_path)
     source = source_path
@@ -50,6 +53,7 @@ def run_yolov5(source_path,weights_path,conf_thresh,iou_thresh):
                         s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "
                 for *xyxy, conf, cls in reversed(det):
                     xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()
-                    result.append([int(cls),xywh,float(conf)])
+                    result.append([classes[int(cls)],xywh,float(conf)])
     return result
-# run_yolov5("testing_images\૦૫૨ 218 ળડશ ળીઅંથ વઅઃપ ૫૨૧ ધઠગ રચસ એભીઅંયં આછૂબ_71.jpg","./YoloV5_model2/yolov5x_latest_8000/weights/best.pt",0.55,0.5)
+# res = run_yolov5("testing_images\૦૫૨ 218 ળડશ ળીઅંથ વઅઃપ ૫૨૧ ધઠગ રચસ એભીઅંયં આછૂબ_71.jpg","./YoloV5_model2/yolov5x_latest_8000/weights/best.pt",0.55,0.5)
+# print(res)
