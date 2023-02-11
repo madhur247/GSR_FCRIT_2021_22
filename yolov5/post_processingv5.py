@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(1,os.path.dirname(os.path.realpath(__file__)))
+
 from yolov5_output import run_yolov5
 from IOU import calculate_iou
 

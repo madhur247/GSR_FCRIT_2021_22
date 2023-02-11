@@ -1,0 +1,2 @@
+from yolov5 import post_processingv5 as post
+print(post.post_process("testing_images/021 ૮૦૧૫ ૫૪૩૮ છૌનુઋઆ ઔઉદ 387 628 ઞનઅઃખ ચઅંપાદો થષઋ_32.jpg","./YoloV5_model2/yolov5x_latest_8000/weights/best.pt",0.55,0.5,"space.names"))
