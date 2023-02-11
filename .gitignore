@@ -1,4 +1,10 @@
 YoloV5_model2/
 testing_images/
-yolov5/__pycache__
+yolov5/__pycache__/
+get_yolo_output.py
+mid_layer.py
+post_processing.py
+requirements.txt
+seperate_bboxes2.py
+Seperator.py
 *.zip
