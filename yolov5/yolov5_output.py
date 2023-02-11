@@ -1,6 +1,6 @@
 import torch
-import cv2
-import os
+# import cv2
+# import os
 from models.common import DetectMultiBackend
 from utils.dataloaders import LoadImages
 
